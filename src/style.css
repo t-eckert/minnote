@@ -45,7 +45,8 @@ body {
   font-family: var(--font-family);
   font-size: 1rem;
   color: var(--text);
-  width: 40rem;
+  width: 100%;
+  max-width: 40rem;
   height: 100%;
   border: none;
   background: none;
@@ -73,6 +74,15 @@ body {
   border: none;
   border-radius: 25%;
   box-shadow: var(--shadow);
+}
+
+@media screen and (max-width: 750px) {
+  #copy {
+    top: unset;
+    right: unset;
+    bottom: 2rem;
+    left: 2rem;
+  }
 }
 
 #copy:hover {
