@@ -1,8 +1,161 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+:root {
+  --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --page-background: hsl(0, 0%, 98%);
+  --button-background: hsl(0, 0%, 97%);
+  --button-background-active: hsl(0, 0%, 97%);
+  --button-background-hover: hsl(0, 0%, 95%);
+
+  --text: hsl(0, 0%, 5%);
+
+  --bar: hsl(0, 0%, 90%);
+
+  --primary: hsl(0, 0%, 30%);
+  --secondary: hsl(0, 0%, 65%);
+  --tertiary: hsl(0, 0%, 97%);
+
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --page-background: hsl(0, 0%, 0%);
+}
+
+html {
+  font-family: var(--font-family);
+  background-color: var(--page-background);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+#textbox {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--text);
+  width: 40rem;
+  height: 100%;
+  border: none;
+  background: none;
+  resize: none;
+  outline: none;
+}
+
+#textbox:active {
+  border: none;
+  outline: none;
+}
+
+#copy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  cursor: pointer;
+  color: var(--primary);
+  background: var(--button-background);
+  border: none;
+  border-radius: 25%;
+  box-shadow: var(--shadow);
+}
+
+#copy:hover {
+  color: var(--text);
+  box-shadow: var(--shadow-hover);
+  background: var(--button-background-hover);
+}
+
+#menu-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.3rem;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+#menu-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary);
+  background-color: var(--tertiary);
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+#menu-toggle:hover {
+  color: var(--text);
+  box-shadow: var(--shadow-hover);
+  background: var(--button-background-hover);
+}
+
+#menu {
+  margin: 0;
+  padding: 0.5rem 0;
+  background-color: var(--page-background);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  width: 10rem;
+}
+
+#menu > a,
+#menu > div {
+  margin: 0;
+  list-style-type: none;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+#menu > a:hover,
+#menu > div:hover {
+  background: var(--button-background-hover);
+}
+
+#menu > div.active {
+  background: var(--button-background-active);
+}
+
+#menu > header {
+  padding: 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: var(--bar) 1px solid;
+}
+
+#menu > header > h1 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+#menu > header > h2 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--primary);
 }

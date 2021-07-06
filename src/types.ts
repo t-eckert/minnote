@@ -1,0 +1,1 @@
+export type MenuState = "opened" | "closed"
