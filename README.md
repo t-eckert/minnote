@@ -1,3 +1,3 @@
 # Minnote
 
-A small, local text editor for the web.
+A small, local text editor in the browser.
