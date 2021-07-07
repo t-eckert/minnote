@@ -123,6 +123,8 @@ body {
 }
 
 #menu {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0.5rem 0;
   background-color: var(--page-background);
@@ -135,7 +137,7 @@ body {
 #menu > div {
   margin: 0;
   list-style-type: none;
-  padding: 0.1rem 0.5rem;
+  padding: 0.15rem 0.5rem;
   font-size: 0.9rem;
   text-decoration: none;
   color: var(--text);
