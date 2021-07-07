@@ -11,15 +11,17 @@
 <body>
   <textarea name="textbox" id="textbox" placeholder="Write your notes here"></textarea>
 
-  <button id="copy" aria-label="copy">
+  <button id="copy-button" aria-label="copy">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
       <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
       <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
     </svg>
   </button>
 
+  <section id="notification-section"></section>
+
   <div id="menu-section">
-    <section id="menu" hidden>
+    <section id="menu" class="hidden" hidden>
       <header>
         <h1>Minnote</h1>
         <h2>A small, local text editor in the browser.</h2>
