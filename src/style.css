@@ -27,6 +27,26 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --background: hsl(5, 5%, 7%);
+    --foreground: hsl(5, 5%, 10%);
+    --foreground-hover: hsl(5, 5%, 15%);
+    --shade: hsla(0, 0%, 12%, 97%);
+
+    --text-primary: hsl(5, 5%, 90%);
+    --text-secondary: hsl(5, 5%, 80%);
+
+    --primary: hsl(175, 84%, 32%);
+    --secondary: hsl(173, 80%, 40%);
+
+    --positive: hsl(120, 59%, 37%);
+    --negative: hsl(0, 88%, 61%);
+
+    --highlight: hsl(0, 0%, 10%);
+
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.7), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.7),
+      0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    --shadow-focus: 0 0 0.5rem 0 var(--primary);
   }
 }
 
@@ -163,6 +183,7 @@ p {
   gap: 0.4rem;
   align-items: center;
   justify-items: center;
+  color: var(--text-secondary);
   background: var(--foreground);
   box-shadow: var(--shadow);
   border-radius: 1rem;
@@ -192,7 +213,7 @@ p {
 }
 
 #menu-toggle:hover {
-  color: var(--text);
+  color: var(--text-primary);
   box-shadow: var(--shadow-hover);
   background: var(--foreground-hover);
 }
@@ -245,6 +266,7 @@ p {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 500;
+  color: var(--text-primary);
 }
 
 #menu > header > h2 {
@@ -277,6 +299,7 @@ p {
   z-index: 10;
   flex-direction: column;
   max-width: 30rem;
+  color: var(--text-primary);
   background: var(--background);
   box-shadow: var(--shadow);
   padding: 1rem;
