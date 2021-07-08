@@ -7,6 +7,8 @@
   --button-background: hsl(0, 0%, 97%);
   --button-background-active: hsl(0, 0%, 97%);
   --button-background-hover: hsl(0, 0%, 95%);
+  --highlight-1: hsl(175, 84%, 32%);
+  --highlight-2: hsl(173, 80%, 40%);
 
   --text: hsl(0, 0%, 5%);
 
@@ -15,32 +17,35 @@
   --primary: hsl(0, 0%, 30%);
   --secondary: hsl(0, 0%, 65%);
   --tertiary: hsl(0, 0%, 97%);
+  --shade: hsla(0, 0%, 98%, 0.85);
 
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-[data-theme="dark"] {
-  --page-background: hsl(0, 0%, 0%);
-}
-
 html {
   font-family: var(--font-family);
   background-color: var(--page-background);
+  color: var(--text);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.5rem;
-  height: 100%;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 p {
   margin: 0;
 }
@@ -61,10 +66,19 @@ p {
   color: red;
 }
 
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: calc(100vh - 4rem);
+  padding: 2rem;
+}
+
 #textbox {
   font-family: var(--font-family);
   font-size: 1rem;
   color: var(--text);
+  caret-color: var(--highlight-1);
   width: 100%;
   max-width: 40rem;
   height: 100%;
@@ -79,13 +93,31 @@ p {
   outline: none;
 }
 
-#copy-button {
+.sidebar {
+  width: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+@media screen and (max-width: 700px) {
+  #container {
+    padding: 1rem;
+    flex-direction: column;
+    height: calc(100vh - 2rem);
+  }
+
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.token-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
   width: 1.75rem;
   height: 1.75rem;
   cursor: pointer;
@@ -96,16 +128,7 @@ p {
   box-shadow: var(--shadow);
 }
 
-@media screen and (max-width: 750px) {
-  #copy-button {
-    top: unset;
-    right: unset;
-    bottom: 2rem;
-    left: 2rem;
-  }
-}
-
-#copy-button:hover {
+.token-button:hover {
   color: var(--text);
   box-shadow: var(--shadow-hover);
   background: var(--button-background-hover);
@@ -113,12 +136,13 @@ p {
 
 #notification-section {
   display: flex;
+  z-index: 10;
   flex-direction: column-reverse;
-  align-items: flex-end;
-  justify-items: flex-end;
+  align-items: center;
   position: absolute;
   bottom: 2rem;
   gap: 0.2rem;
+  width: 100vw;
 }
 
 .notification {
@@ -139,9 +163,6 @@ p {
   justify-content: flex-end;
   align-items: flex-end;
   gap: 0.3rem;
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
 }
 
 #menu-toggle {
@@ -165,6 +186,8 @@ p {
 }
 
 #menu {
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -216,4 +239,61 @@ p {
   font-size: 0.8rem;
   font-weight: 400;
   color: var(--primary);
+}
+
+#modal-section.visible {
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: var(--shade);
+}
+
+#modal-section.hidden {
+  display: hidden;
+}
+
+#modal {
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+  flex-direction: column;
+  max-width: 30rem;
+  background: var(--page-background);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+#modal > header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#modal > header > h1 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+#modal p {
+  font-size: 1rem;
+}
+
+#modal a {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--highlight-1);
+}
+
+#modal a:hover {
+  text-decoration: none;
+  color: var(--highlight-2);
 }

@@ -1,8 +1,10 @@
 import { save, load } from "./storage"
 import { Notification } from "./notifications"
+import { ModalState } from "./modal"
 
 const notificationsUpdated = new Event("notificationsUpdated")
 const menuUpdated = new Event("menuUpdated")
+const modalUpdated = new Event("modalUpdated")
 
 export const state = {
     textbox: {
@@ -15,6 +17,7 @@ export const state = {
         visible: false,
     },
     notifications: [] as Notification[],
+    modal: "hidden" as ModalState
 }
 
 
@@ -35,6 +38,10 @@ export const actions = {
     popNotification: (id: string) => {
         state.notifications = state.notifications.filter(notification => notification.id !== id)
         document.dispatchEvent(notificationsUpdated)
+    },
+    setModalState: (modalState: ModalState) => {
+        state.modal = modalState
+        document.dispatchEvent(modalUpdated)
     }
 }
 
