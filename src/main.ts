@@ -23,5 +23,3 @@ if (menu) registerMenu(menu, state)
 if (menuToggle) registerMenuToggle(menuToggle, actions)
 if (modalSection) registerModal(modalSection, state, actions)
 if (modalToggles) registerModalToggles(modalToggles, actions)
-
-actions.setModalState("about")
