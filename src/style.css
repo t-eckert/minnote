@@ -3,30 +3,36 @@
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-  --page-background: hsl(0, 0%, 98%);
-  --button-background: hsl(0, 0%, 97%);
-  --button-background-active: hsl(0, 0%, 97%);
-  --button-background-hover: hsl(0, 0%, 95%);
-  --highlight-1: hsl(175, 84%, 32%);
-  --highlight-2: hsl(173, 80%, 40%);
+  --background: hsl(0, 0%, 98%);
+  --foreground: hsl(0, 0%, 99%);
+  --foreground-hover: hsl(0, 0%, 99%);
+  --shade: hsla(0, 0%, 95%, 75%);
 
-  --text: hsl(0, 0%, 5%);
+  --text-primary: hsl(0, 0%, 5%);
+  --text-secondary: hsl(0, 0%, 10%);
 
-  --bar: hsl(0, 0%, 90%);
+  --primary: hsl(175, 84%, 32%);
+  --secondary: hsl(173, 80%, 40%);
 
-  --primary: hsl(0, 0%, 30%);
-  --secondary: hsl(0, 0%, 65%);
-  --tertiary: hsl(0, 0%, 97%);
-  --shade: hsla(0, 0%, 98%, 0.85);
+  --positive: hsl(120, 59%, 37%);
+  --negative: hsl(0, 88%, 61%);
+
+  --highlight: hsl(0, 0%, 90%);
 
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-focus: 0 0 0.5rem 0 var(--primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
 }
 
 html {
   font-family: var(--font-family);
-  background-color: var(--page-background);
+  background-color: var(--background);
   color: var(--text);
   width: 100vw;
   height: 100vh;
@@ -50,47 +56,12 @@ p {
   margin: 0;
 }
 
-.icon {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  height: 1rem;
-  width: 1rem;
-}
-
-.icon-success {
-  color: green;
-}
-
-.icon-error {
-  color: red;
-}
-
 #container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: calc(100vh - 4rem);
   padding: 2rem;
-}
-
-#textbox {
-  font-family: var(--font-family);
-  font-size: 1rem;
-  color: var(--text);
-  caret-color: var(--highlight-1);
-  width: 100%;
-  max-width: 40rem;
-  height: 100%;
-  border: none;
-  background: none;
-  resize: none;
-  outline: none;
-}
-
-#textbox:active {
-  border: none;
-  outline: none;
 }
 
 .sidebar {
@@ -114,6 +85,42 @@ p {
   }
 }
 
+.icon {
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  height: 1rem;
+  width: 1rem;
+}
+
+.icon-success {
+  color: var(--positive);
+}
+
+.icon-error {
+  color: var(--negative);
+}
+
+#textbox {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--text-primary);
+  caret-color: var(--primary);
+  width: 100%;
+  max-width: 40rem;
+  height: 100%;
+  border: none;
+  background: none;
+  resize: none;
+  outline: none;
+}
+
+#textbox:active {
+  border: none;
+  outline: none;
+}
+
 .token-button {
   display: flex;
   justify-content: center;
@@ -121,17 +128,22 @@ p {
   width: 1.75rem;
   height: 1.75rem;
   cursor: pointer;
-  color: var(--primary);
-  background: var(--button-background);
+  color: var(--text-secondary);
+  background: var(--foreground);
   border: none;
   border-radius: 25%;
   box-shadow: var(--shadow);
 }
 
 .token-button:hover {
-  color: var(--text);
+  color: var(--text-primary);
   box-shadow: var(--shadow-hover);
-  background: var(--button-background-hover);
+  background: var(--foreground-hover);
+}
+
+.token-button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
 }
 
 #notification-section {
@@ -151,7 +163,7 @@ p {
   gap: 0.4rem;
   align-items: center;
   justify-items: center;
-  background: var(--background);
+  background: var(--foreground);
   box-shadow: var(--shadow);
   border-radius: 1rem;
   padding: 0.3rem 0.6rem;
@@ -171,8 +183,8 @@ p {
   align-items: center;
   width: 2rem;
   height: 2rem;
-  color: var(--primary);
-  background-color: var(--tertiary);
+  color: var(--text-secondary);
+  background-color: var(--foreground);
   border: none;
   border-radius: 100%;
   cursor: pointer;
@@ -182,7 +194,12 @@ p {
 #menu-toggle:hover {
   color: var(--text);
   box-shadow: var(--shadow-hover);
-  background: var(--button-background-hover);
+  background: var(--foreground-hover);
+}
+
+#menu-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
 }
 
 #menu {
@@ -191,8 +208,8 @@ p {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 0.5rem 0;
-  background-color: var(--page-background);
+  padding: 0.8rem 0;
+  background-color: var(--background);
   border-radius: 1rem;
   box-shadow: var(--shadow);
   width: 10rem;
@@ -209,23 +226,19 @@ p {
   padding: 0.15rem 0.5rem;
   font-size: 0.9rem;
   text-decoration: none;
-  color: var(--text);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
 #menu > a:hover,
 #menu > div:hover {
-  background: var(--button-background-hover);
-}
-
-#menu > div.active {
-  background: var(--button-background-active);
+  background: var(--highlight);
 }
 
 #menu > header {
   padding: 0 0.5rem;
   padding-bottom: 0.3rem;
-  border-bottom: var(--bar) 1px solid;
+  border-bottom: var(--highlight) 1px solid;
 }
 
 #menu > header > h1 {
@@ -238,7 +251,7 @@ p {
   margin: 0;
   font-size: 0.8rem;
   font-weight: 400;
-  color: var(--primary);
+  color: var(--text-secondary);
 }
 
 #modal-section.visible {
@@ -264,7 +277,7 @@ p {
   z-index: 10;
   flex-direction: column;
   max-width: 30rem;
-  background: var(--page-background);
+  background: var(--background);
   box-shadow: var(--shadow);
   padding: 1rem;
   border-radius: 1rem;
@@ -280,7 +293,7 @@ p {
 #modal > header > h1 {
   font-weight: 500;
   font-size: 1.25rem;
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 #modal p {
@@ -290,10 +303,10 @@ p {
 #modal a {
   font-weight: 500;
   text-decoration: none;
-  color: var(--highlight-1);
+  color: var(--primary);
 }
 
 #modal a:hover {
   text-decoration: none;
-  color: var(--highlight-2);
+  color: var(--secondary);
 }
