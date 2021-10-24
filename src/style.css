@@ -50,6 +50,10 @@
   }
 }
 
+::selection {
+  background: var(--primary);
+}
+
 html {
   font-family: var(--font-family);
   background-color: var(--background);
