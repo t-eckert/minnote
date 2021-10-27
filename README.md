@@ -1,4 +1,4 @@
-# Minnote
+# ![Minnote icon](favicon.png) [Minnote](https://minnote.io/)
 
 A small, local text editor in the browser.
 
